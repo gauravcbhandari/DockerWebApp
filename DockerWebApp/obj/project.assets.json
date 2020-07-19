@@ -6150,11 +6150,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gauravcbhandari\\Code\\My\\DockerWebApp\\DockerWebApp\\DockerWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\gauravcbhandari\\Source\\Repos\\DockerWebApp\\DockerWebApp\\DockerWebApp.csproj",
       "projectName": "DockerWebApp",
-      "projectPath": "C:\\Users\\gauravcbhandari\\Code\\My\\DockerWebApp\\DockerWebApp\\DockerWebApp.csproj",
+      "projectPath": "C:\\Users\\gauravcbhandari\\Source\\Repos\\DockerWebApp\\DockerWebApp\\DockerWebApp.csproj",
       "packagesPath": "C:\\Users\\gauravcbhandari\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gauravcbhandari\\Code\\My\\DockerWebApp\\DockerWebApp\\obj\\",
+      "outputPath": "C:\\Users\\gauravcbhandari\\Source\\Repos\\DockerWebApp\\DockerWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gauravcbhandari\\AppData\\Roaming\\NuGet\\NuGet.Config",

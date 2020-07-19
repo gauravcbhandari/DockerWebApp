@@ -23,18 +23,16 @@ namespace DockerWebApp.Models
             myIP = Environment.GetEnvironmentVariable("SERVICE-ADRESS");
             port = Environment.GetEnvironmentVariable("SERVICE-PORT");
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public async Task<List<Employee>> GetAllEmployee()
         {
-            // Get the IP  
-            // string myIP = GetIPAddress();
 
             List<Employee> model = null;
-            await _ihttpclient.GetAsync("https://localhost:32768/api/Employee")
+            await _ihttpclient.GetAsync($"https://{myIP}:{port}/api/Employee")
           .ContinueWith((taskwithresponse) =>
           {
               var response = taskwithresponse.Result;
@@ -50,7 +48,7 @@ namespace DockerWebApp.Models
         {
             var jsonInString = JsonConvert.SerializeObject(employee);
 
-            var result = await _ihttpclient.PostAsync("https://localhost:32768/api/Employee", new StringContent(jsonInString, Encoding.UTF8, "application/json"));
+            var result = await _ihttpclient.PostAsync($"https://{myIP}:{port}/api/Employee", new StringContent(jsonInString, Encoding.UTF8, "application/json"));
             if (result != null)
             {
                 return 1;

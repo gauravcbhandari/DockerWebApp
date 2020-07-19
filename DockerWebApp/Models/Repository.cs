@@ -32,7 +32,7 @@ namespace DockerWebApp.Models
         {
 
             List<Employee> model = null;
-            await _ihttpclient.GetAsync($"https://{myIP}:{port}/api/Employee")
+            await _ihttpclient.GetAsync($"http://{myIP}:{port}/api/Employee")
           .ContinueWith((taskwithresponse) =>
           {
               var response = taskwithresponse.Result;
@@ -48,7 +48,7 @@ namespace DockerWebApp.Models
         {
             var jsonInString = JsonConvert.SerializeObject(employee);
 
-            var result = await _ihttpclient.PostAsync($"https://{myIP}:{port}/api/Employee", new StringContent(jsonInString, Encoding.UTF8, "application/json"));
+            var result = await _ihttpclient.PostAsync($"http://{myIP}:{port}/api/Employee", new StringContent(jsonInString, Encoding.UTF8, "application/json"));
             if (result != null)
             {
                 return 1;

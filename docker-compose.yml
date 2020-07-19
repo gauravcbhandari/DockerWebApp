@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  dockerwebapp:
+    image: ${DOCKER_REGISTRY-}dockerwebapp
+    build:
+      context: /DockerWebApp
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:80
+    environment:
+     - SERVICE-ADRESS=
+     - SERVICE-PORT=5001
+
+  dockerapi:
+    image: ${DOCKER_REGISTRY-}dockerapi
+    build:
+      context: /DockerAPI
+      dockerfile: ./Dockerfile
+    ports:
+      - 5001:80

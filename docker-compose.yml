@@ -1,21 +1,26 @@
-version: '2'
+version: '3.4'
+
+ 
 
 services:
-  dockerwebapp:
-    image: ${DOCKER_REGISTRY-}dockerwebapp
+  dockertestwebapi:
+    image: dockertestwebapi
     build:
-      context: /DockerWebApp
-      dockerfile: ./Dockerfile
+      context: /home/gauravcbhandari/Docker/DockerWebAPI/DockerAPI/
+      dockerfile: Dockerfile
+    ports:
+      - 5001:80
+  dockerwebapp:
+    image: dockerwebapp
+    build:
+      context: /home/gauravcbhandari/Docker/DockerWebApp/DockerWebApp/
+      dockerfile: Dockerfile
+    depends_on:
+      - dockertestwebapi
     ports:
       - 5000:80
     environment:
-     - SERVICE-ADRESS=
-     - SERVICE-PORT=5001
-
-  dockerapi:
-    image: ${DOCKER_REGISTRY-}dockerapi
-    build:
-      context: /DockerAPI
-      dockerfile: ./Dockerfile
-    ports:
-      - 5001:80
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=false
+      - SERVICE-ADRESS=52.188.16.144
+      - SERVICE-PORT=5001

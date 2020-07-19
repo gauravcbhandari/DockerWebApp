@@ -30,7 +30,6 @@ namespace DockerWebApp.Models
         /// <returns></returns>
         public async Task<List<Employee>> GetAllEmployee()
         {
-
             List<Employee> model = null;
             await _ihttpclient.GetAsync($"http://{myIP}:{port}/api/Employee")
           .ContinueWith((taskwithresponse) =>

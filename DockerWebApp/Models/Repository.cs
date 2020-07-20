@@ -31,14 +31,23 @@ namespace DockerWebApp.Models
         public async Task<List<Employee>> GetAllEmployee()
         {
             List<Employee> model = null;
-            await _ihttpclient.GetAsync($"http://{myIP}:{port}/api/Employee")
-          .ContinueWith((taskwithresponse) =>
-          {
-              var response = taskwithresponse.Result;
-              var jsonString = response.Content.ReadAsStringAsync();
-              jsonString.Wait();
-              model = JsonConvert.DeserializeObject<List<Employee>>(jsonString.Result);
-          });
+            //await _ihttpclient.GetAsync("https://host.docker.internal:32768/api/Employee")
+            //.ContinueWith((taskwithresponse) =>
+            //{
+            //    var response = taskwithresponse.Result;
+            //    var jsonString = response.Content.ReadAsStringAsync();
+            //    jsonString.Wait();
+            //    model = JsonConvert.DeserializeObject<List<Employee>>(jsonString.Result);
+            //});
+
+            using (var client = new HttpClient())
+            {
+                var request = new System.Net.Http.HttpRequestMessage();
+                request.RequestUri = new Uri("https://localhost:44366/api/Employee"); // ASP.NET 2.x
+                var response = await client.SendAsync(request);
+                var jsonString = await response.Content.ReadAsStringAsync();
+                model = JsonConvert.DeserializeObject<List<Employee>>(jsonString);
+            }
 
             return model;
         }
@@ -47,12 +56,21 @@ namespace DockerWebApp.Models
         {
             var jsonInString = JsonConvert.SerializeObject(employee);
 
-            var result = await _ihttpclient.PostAsync($"http://{myIP}:{port}/api/Employee", new StringContent(jsonInString, Encoding.UTF8, "application/json"));
-            if (result != null)
+            using (var client = new HttpClient())
             {
-                return 1;
+                var request = new System.Net.Http.HttpRequestMessage();
+                request.RequestUri = new Uri("https://localhost:44366/api/Employee"); // ASP.NET 2.x
+                var response = await client.PostAsync(request.RequestUri, new StringContent(jsonInString, Encoding.UTF8, "application/json"));
+
+                if (response != null)
+                {
+                    return 1;
+                }
+                return 0;
             }
-            return 0;
+
+            //var result = await _ihttpclient.PostAsync($"http://{myIP}:{port}/api/Employee", new StringContent(jsonInString, Encoding.UTF8, "application/json"));
+
         }
     }
 }

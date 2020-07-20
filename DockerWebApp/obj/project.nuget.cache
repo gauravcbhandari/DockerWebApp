@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N4TFVIquZIt3YByiXyowi18+PMWB3TYuw2mUdX0al1wVJZATFfaYfiWNSCxawp9KxFttd56+wkYNG+5IJh14ew==",
+  "dgSpecHash": "EUvSXEbwLAnfes3N91RYOY0w5A25245UUwoBT8U6Heq+JcvuLrwGJ4M+tHGmxafdODvxTV8Z0B1fzLAEoufbbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gauravcbhandari\\Source\\Repos\\DockerWebApp\\DockerWebApp\\DockerWebApp.csproj",
+  "projectFilePath": "C:\\Users\\gauravcbhandari\\source\\repos\\DockerWebApp\\DockerWebApp\\DockerWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gauravcbhandari\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\gauravcbhandari\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
